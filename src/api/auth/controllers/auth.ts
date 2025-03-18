@@ -4,10 +4,10 @@ import { Context } from "koa";
 export default {
   async authorRegister(ctx: Context) {
     try {
-      const { email, password, username, role } = ctx.request.body;
+      const { email, password, username, name, role } = ctx.request.body;
 
       // Validate input
-      if (!email || !password || !username) {
+      if (!email || !password || !username || !name) {
         return ctx.badRequest("Missing required fields");
       }
 
@@ -50,6 +50,7 @@ export default {
         email,
         password,
         username,
+        name,
         confirmed: true, // Adjust based on your requirements
         blocked: false,
         provider: "local",
